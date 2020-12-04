@@ -1,7 +1,7 @@
 {
 	"name": "@keydonix/uniswap-oracle-ethers-sdk-adapter",
 	"description": "Adapter for using @keydonix/uniswap-oracle-sdk with legacy providers like raw JSON-RPC, ethers, web3.js, etc.",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"license": "Unlicense",
 	"repository": {
 		"type": "git",
@@ -26,7 +26,7 @@
 		"build": "npx ttsc --project ./tsconfig-esm.json && npx ttsc --project ./tsconfig-cjs.json",
 		"watch-esm": "npx ttsc --project ./tsconfig-esm.json --watch",
 		"watch-cjs": "npx ttsc --project ./tsconfig-cjs.json --watch",
-		"prepublishOnly": "cd ../sdk && npm run build && cd ../demo && npm run build && npm run test && cd ../sdk-adapter && npm run build && node --eval \"require('fs').copyFile('../README.md', 'README.md', error => {if(error) throw error})\"",
+		"prepublishOnly": "cd ../sdk && npm run build && cd ../demo && npm run build && npm run test && cd ../ethers-sdk-adapter && npm run build && node --eval \"require('fs').copyFile('../README.md', 'README.md', error => {if(error) throw error})\"",
 		"postpublish": "node --eval \"require('fs').unlink('README.md', error => {if(error) throw error})\""
 	},
 	"files": [
