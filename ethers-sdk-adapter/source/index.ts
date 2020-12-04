@@ -4,7 +4,8 @@ type Provider = { send: (method: string, params?: unknown[] | object) => Promise
 
 export function getBlockByNumberFactory(provider: Provider): OracleSdk.EthGetBlockByNumber {
 	return async (blockNumber: bigint | 'latest') => {
-		const block = await provider.send('eth_getBlockByNumber', [`0x${blockNumber.toString(16)}`, false])
+		const stringifiedBlockNumber = typeof blockNumber === 'bigint' ? `0x${blockNumber.toString(16)}` : blockNumber
+		const block = await provider.send('eth_getBlockByNumber', [stringifiedBlockNumber, false])
 		assertPlainObject(block)
 		assertProperty(block, 'parentHash', 'string')
 		assertProperty(block, 'sha3Uncles', 'string')
